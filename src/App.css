@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+body {
+    background-color: rgb(236, 234, 234);
+}
+
+.dark body {
+    background-color: rgb(31 41 55);
+}
+
+nav ul li .active {
+    background-color: rgb(50, 83, 1) !important;
+    color: white;
+}
+
+input[type=text],
+select {
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type=text]:focus {
+    border: 3px solid #06ed98 !important;
+}
+
+select:focus {
+    border: 1px solid #06ed98 !important;
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 10px;
+    min-height: 20px;
+    /* 👈 controls the thumb height */
+}

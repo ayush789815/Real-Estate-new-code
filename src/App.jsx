@@ -1,49 +1,49 @@
-import './App.css';
-import { Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import "./App.css";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
-import DashBoard from './components/dashBoard/DashBoard';
-import UserManagement from './components/userManagement/UserManagement';
-import PropertyManagementPage from './components/propertyManagement/PropertyManagementPage';
-import InactiveRequext from './components/listing&InactiveRequest/InactiveRequext';
-import SlideManager from './components/sliderManagemt/SlideManager';
-import Notification from './components/Notification/Notification';
-import Settings from './components/Settings/Settings';
-import Login from './components/Login/Login';
-import Navbar from './components/Navbar';
-import SplashScreen from './components/SplashScreen';
-import Error404 from './components/Error/Error404';
+import DashBoard from "./components/dashBoard/DashBoard";
+import UserManagement from "./components/userManagement/UserManagement";
+import PropertyManagementPage from "./components/propertyManagement/PropertyManagementPage";
+import InactiveRequext from "./components/listing&InactiveRequest/InactiveRequext";
+import SlideManager from "./components/sliderManagemt/SlideManager";
+import Notification from "./components/Notification/Notification";
+import Settings from "./components/Settings/Settings";
+import Login from "./components/Login/Login";
+import Navbar from "./components/Navbar";
+import SplashScreen from "./components/SplashScreen";
+import Error404 from "./components/Error/Error404";
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   return token ? children : <Navigate to="/login" replace />;
 };
 
 function App() {
   const location = useLocation();
   const darkMode = useSelector((state) => state.theme.darkMode);
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem("token")
+  );
   const [splashShown, setSplashShown] = useState(() => {
-    return sessionStorage.getItem('splashShown') === 'true' || localStorage.getItem('token');
+    return (
+      sessionStorage.getItem("splashShown") === "true" ||
+      localStorage.getItem("token")
+    );
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
-  }, [darkMode]);
-
-  useEffect(() => {
-    setIsAuthenticated(!!localStorage.getItem('token'));
+    setIsAuthenticated(!!localStorage.getItem("token"));
   }, [location]);
 
   useEffect(() => {
-    // Only show splash if not logged in AND not already shown
-    if (!splashShown && !localStorage.getItem('token')) {
+    if (!splashShown && !localStorage.getItem("token")) {
       const timer = setTimeout(() => {
-        sessionStorage.setItem('splashShown', 'true');
+        sessionStorage.setItem("splashShown", "true");
         setSplashShown(true);
       }, 2800);
       return () => clearTimeout(timer);
@@ -51,41 +51,99 @@ function App() {
   }, [splashShown]);
 
   const validRoutes = [
-    '/',
-    '/login',
-    '/usermanagement',
-    '/propertymanagement',
-    '/inactive-requext',
-    '/slide-manager',
-    '/notification',
-    '/settings',
-    '/dashboard'
+    "/",
+    "/login",
+    "/usermanagement",
+    "/propertymanagement",
+    "/inactive-requext",
+    "/slide-manager",
+    "/notification",
+    "/settings",
+    "/dashboard",
   ];
 
   const isValidRoute = validRoutes.includes(location.pathname);
   const shouldShowNavbar =
-    isAuthenticated &&
-    location.pathname !== '/login' &&
-    isValidRoute;
+    isAuthenticated && location.pathname !== "/login" && isValidRoute;
 
-  // Show splash screen once per session only before login
-  if (!splashShown && !localStorage.getItem('token')) return <SplashScreen />;
+  if (!splashShown && !localStorage.getItem("token")) return <SplashScreen />;
 
   return (
-    <div className="flex">
+    <div
+      className={`flex h-screen dark:h-full ${
+        darkMode ? "dark" : ""
+      } dark:bg-[#001118]`}
+    >
       {shouldShowNavbar && <Navbar />}
       <ToastContainer position="top-center" autoClose={3000} />
-      <div className="app flex-1">
+      <div className="app flex-1 overflow-y-auto h-screen">
         <Routes>
-          <Route path="/" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} replace />} />
+          <Route
+            path="/"
+            element={
+              <Navigate
+                to={isAuthenticated ? "/dashboard" : "/login"}
+                replace
+              />
+            }
+          />
           <Route path="/login" element={<Login />} />
-          <Route path="/usermanagement" element={<PrivateRoute><UserManagement /></PrivateRoute>} />
-          <Route path="/propertymanagement" element={<PrivateRoute><PropertyManagementPage /></PrivateRoute>} />
-          <Route path="/inactive-requext" element={<PrivateRoute><InactiveRequext /></PrivateRoute>} />
-          <Route path="/slide-manager" element={<PrivateRoute><SlideManager /></PrivateRoute>} />
-          <Route path="/notification" element={<PrivateRoute><Notification /></PrivateRoute>} />
-          <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
-          <Route path="/dashboard" element={<PrivateRoute><DashBoard /></PrivateRoute>} />
+          <Route
+            path="/usermanagement"
+            element={
+              <PrivateRoute>
+                <UserManagement />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/propertymanagement"
+            element={
+              <PrivateRoute>
+                <PropertyManagementPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/inactive-requext"
+            element={
+              <PrivateRoute>
+                <InactiveRequext />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/slide-manager"
+            element={
+              <PrivateRoute>
+                <SlideManager />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/notification"
+            element={
+              <PrivateRoute>
+                <Notification />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <PrivateRoute>
+                <Settings />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <DashBoard />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </div>

@@ -44,8 +44,8 @@ const StatusFilter = ({ value, onChange }) => {
               key={opt.value}
               className={`cursor-pointer py-2 px-4 rounded-3xl transition-colors duration-200 ${
                 selected === opt.value
-                  ? "bg-[#1C2B49] text-white"
-                  : "hover:bg-[#ECECEC] hover:text-gray-700 dark:hover:bg-gray-700"
+                  ? "bg-[#597695] text-white"
+                  : "hover:bg-[#ECECEC] hover:text-gray-700 dark:hover:text-[#9B9DA6] dark:hover:bg-gray-700"
               }`}
               onClick={() => handleSelect(opt.value)}
             >

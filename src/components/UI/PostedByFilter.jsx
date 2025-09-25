@@ -22,7 +22,7 @@ const PostedByFilter = ({ value, onChange }) => {
     <div className="relative w-full sm:w-[200px]">
       <button
         type="button"
-        className={`h-10 sm:h-12 w-full flex items-center justify-between text-gray-700 dark:text-gray-200 px-4 py-2 rounded-3xl bg-white dark:bg-gray-700 text-sm sm:text-base  dark:border-gray-700 focus:outline-none transition 
+        className={`h-10 sm:h-12 w-full flex items-center justify-between text-gray-700 dark:text-gray-200 px-4 py-2 rounded-3xl bg-white dark:bg-[#182832] text-sm sm:text-base  dark:border-gray-700 focus:outline-none transition 
           ${open ? "shadow-lg" : ""}`}
         onClick={() => setOpen((prev) => !prev)}
       >
@@ -42,8 +42,8 @@ const PostedByFilter = ({ value, onChange }) => {
               key={opt.value}
               className={`cursor-pointer py-2 px-4 rounded-3xl transition-colors duration-200 ${
                 value === opt.value
-                  ? "bg-[#1C2B49] text-white"
-                  : "hover:bg-[#ECECEC] hover:text-gray-700 dark:hover:bg-gray-700"
+                  ? "bg-[#597695] text-white"
+                  : "hover:bg-[#ECECEC] hover:text-gray-700 dark:hover:text-[#9B9DA6] dark:hover:bg-gray-700"
               }`}
               onClick={() => handleSelect(opt.value)}
             >

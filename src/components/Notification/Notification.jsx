@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import useUserManagement from "../../Hoocks/useUserManagemnt";
 import { toast } from "react-toastify";
-
+import { MdOutlineNotificationsActive } from "react-icons/md";
+import { IoSendSharp } from "react-icons/io5";
 // Demo notification history
 const demoNotifications = [
   {
@@ -133,8 +134,8 @@ const Notification = () => {
             onClick={() => setActiveTab("create")}
             className={`px-4 md:px-5 py-2 md:py-3 rounded-xl font-semibold transition-all shadow-sm ${
               activeTab === "create"
-                ? "bg-[#1F2A44] text-white"
-                : "bg-slate-100 text-slate-600 dark:bg-gray-800 dark:text-gray-200"
+                ? "bg-[#1F2A44] dark:bg-[#597695] text-white"
+                : "bg-slate-100 dark:bg-[#001118] text-slate-600 dark:text-gray-200"
             }`}
           >
             Create Notification
@@ -143,8 +144,8 @@ const Notification = () => {
             onClick={() => setActiveTab("history")}
             className={`px-4 md:px-5 py-2 md:py-3 rounded-xl font-semibold transition-all shadow-sm ${
               activeTab === "history"
-                ? "bg-[#1F2A44] text-white"
-                : "bg-slate-100 text-slate-600 dark:bg-gray-800 dark:text-gray-200"
+                ? "bg-[#1F2A44] dark:bg-[#597695] text-white"
+                : "bg-slate-100 dark:bg-[#001118] text-slate-600 dark:text-gray-200"
             }`}
           >
             Notification History
@@ -172,7 +173,7 @@ const Notification = () => {
                   }}
                   onFocus={() => setShowDropdown(true)}
                   placeholder="Search user..."
-                  className="w-full h-12 md:h-14 pl-10 pr-4 rounded-full bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                  className="w-full h-12 md:h-14 pl-10 pr-4 rounded-full bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-200 shadow-sm outline-none"
                 />
                 {showDropdown && (
                   <div className="absolute z-20 mt-2 w-full max-h-64 overflow-auto bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 rounded-xl shadow-lg">
@@ -227,7 +228,7 @@ const Notification = () => {
                 {selectedUsers.length > 0 && (
                   <button
                     onClick={clearSelection}
-                    className="px-4 h-12 rounded-xl bg-slate-100 text-slate-600 font-medium hover:bg-slate-200 dark:bg-gray-700 dark:text-gray-200"
+                    className="px-5 h-12 rounded-xl bg-[#1F2A44] text-white font-semibold shadow-sm"
                   >
                     Clear
                   </button>
@@ -241,13 +242,37 @@ const Notification = () => {
               shown)
             </div>
 
+            {/* Show selected usernames */}
+            {/* Show selected usernames with remove option */}
+            {selectedUsers.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {selectedUsers.map((id) => {
+                  const user = userProfiles.find((u) => u._id === id);
+                  return (
+                    <span
+                      key={id}
+                      className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#1F2A44] text-white text-sm font-medium shadow-sm dark:bg-[#597695]"
+                    >
+                      {user?.username || "Unknown"}
+                      <button
+                        onClick={() => toggleUser(id)}
+                        className="ml-1 text-xs font-bold text-white hover:text-red-400"
+                      >
+                        ✕
+                      </button>
+                    </span>
+                  );
+                })}
+              </div>
+            )}
+
             <div className="mt-6">
               <input
                 type="text"
                 placeholder="Title Notification..."
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full h-12 md:h-14 px-4 rounded-2xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                className="w-full h-12 md:h-14 px-4 rounded-2xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-200 shadow-sm outline-none"
               />
             </div>
 
@@ -256,7 +281,7 @@ const Notification = () => {
                 placeholder="Description Notification"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full min-h-[140px] md:min-h-[160px] p-4 rounded-2xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-200 shadow-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                className="w-full min-h-[140px] md:min-h-[160px] p-4 rounded-2xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-200 shadow-sm resize-y outline-none"
               />
             </div>
 
@@ -266,63 +291,67 @@ const Notification = () => {
                 disabled={!isValid || isSending}
                 className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold shadow-sm transition-colors ${
                   !isValid || isSending
-                    ? "bg-slate-300 text-white cursor-not-allowed"
+                    ? "bg-[#597695] text-white cursor-not-allowed"
                     : "bg-[#1F2A44] text-white hover:bg-[#1B243A]"
                 }`}
               >
-                {isSending ? "Sending..." : "Send Notification"}
+                <IoSendSharp /> {isSending ? "Sending..." : "Send Notification"}
               </button>
             </div>
           </div>
         ) : (
           <div className="mt-6">
             {/* Notification History */}
+            {/* Notification History */}
             <div className="mt-6 space-y-4">
               {notifications.map((notif) => (
                 <div
                   key={notif.id}
                   className="group transition-all duration-300 ease-in-out 
-                             bg-white rounded-[22px] 
-                             shadow-[0px_1px_0.6px_0px_rgba(0,0,0,0.25)] 
-                             p-4 md:p-6 flex gap-4 items-start 
-                             w-full md:max-w-[1218px] 
-                             cursor-pointer 
-                             md:h-[112px] 
-                             hover:md:h-[190px] 
-                             hover:md:opacity-100 
-                             hover:md:bg-[#283655] 
-                             hover:md:shadow-[0px_2px_2px_0px_#00000040]"
+                 bg-white dark:bg-[#182832] rounded-[22px] 
+                 shadow-[0px_1px_0.6px_0px_rgba(0,0,0,0.25)] 
+                 p-4 md:p-6 flex gap-4 items-start 
+                 w-full md:max-w-[1218px] 
+                 cursor-pointer 
+                 md:h-[112px] 
+                 hover:md:h-[190px] 
+                 hover:md:bg-[#283655] 
+                 dark:hover:md:bg-[#597695]
+                 overflow-hidden
+                 hover:md:shadow-[0px_2px_2px_0px_#00000040]"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#EAF0FA] group-hover:md:bg-white">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5 text-[#283655] group-hover:md:text-[#283655]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 17h5l-1.405-1.405M19 13V8a7 7 0 10-14 0v5l-1.405 1.405M9 21h6"
-                      />
-                    </svg>
+                  {/* Icon */}
+                  <div
+                    className="flex items-center justify-center w-10 h-10 rounded-full 
+                      group-hover:md:bg-[#ffffff] 
+                      dark:group-hover:md:bg-[#182832] 
+                      text-[#1F2A44] group-hover:md:text-[#283655]"
+                  >
+                    <MdOutlineNotificationsActive size={24} />
                   </div>
 
+                  {/* Content */}
                   <div className="flex-1">
-                    <h3 className="font-semibold text-[#1F2A44] group-hover:md:text-white">
+                    {/* Always visible */}
+                    <h3 className="font-semibold text-[#1F2A44] dark:text-[#e1e1e1] group-hover:md:text-white">
                       {notif.title}
                     </h3>
-                    <p className="text-gray-700 group-hover:md:text-white">
+                    <p className="text-gray-700 dark:text-[#e1e1e1] group-hover:md:text-gray-200">
                       {notif.message}
                     </p>
-                    <p className="text-xs text-gray-400 mt-1 group-hover:md:text-gray-200">
-                      Date: {notif.date}
-                    </p>
-                    <p className="text-xs text-gray-400 truncate group-hover:md:text-gray-200">
-                      Recipients: {notif.recipients.join(", ")}
-                    </p>
+
+                    {/* Hidden until hover */}
+                    <div
+                      className="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out 
+                     group-hover:max-h-40 group-hover:opacity-100"
+                    >
+                      <p className="text-sm text-[#E1E1E1] mt-1 group-hover:md:text-gray-200">
+                        Date: {notif.date}
+                      </p>
+                      <p className="text-sm text-gray-400 truncate dark:text-[#cfd6e0]">
+                        Recipients: {notif.recipients.join(", ")}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}

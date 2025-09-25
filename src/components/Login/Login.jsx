@@ -172,7 +172,7 @@ const Login = () => {
       </div>
 
       {/* Right Section - Login Form */}
-      <div className="flex flex-1 relative justify-center overflow-hidden items-center p-8">
+      <div className=" flex flex-1 relative justify-center overflow-hidden items-center p-8">
         {/* Animated Gradient Bubbles */}
         <div
           className="absolute top-10 right-16 w-24 h-24 rounded-full opacity-50 animate-top-bottom bg-gradient-to-b from-[#daecff] to-[#eaeaea]"
@@ -198,6 +198,11 @@ const Login = () => {
           className="absolute top-1/4 right-1/3 w-18 h-18 rounded-full opacity-45 animate-left-top bg-gradient-to-b from-[#daecff] to-[#eaeaea]"
           style={{ boxShadow: "-1px -11px 37.6px 0px #00000040 inset" }}
         ></div>
+        <div className="absolute top-10 right-10 w-[179px] h-[39px] opacity-100">
+          <h1 className="font-inter font-black text-[32px] leading-[100%] tracking-[0px] text-[#283655] md:text-[28px] sm:text-[24px]">
+            Real Estate
+          </h1>
+        </div>
 
         <div className="w-full bg-transparent max-w-md dark:bg-gray-800 rounded-2xl relative z-10">
           {/* Company Logo */}

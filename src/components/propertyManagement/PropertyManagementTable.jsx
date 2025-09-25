@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io"; // ⬅ added Dropup icon
 import usePropertyManagement from "../../Hoocks/usePropertyManagement";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -201,7 +201,12 @@ const PropertyManagementTable = ({
                             ? "Active"
                             : "Inactive"}
                         </span>
-                        <IoMdArrowDropdown className="text-lg ml-2" />
+                        {/* ⬇⬆ Toggle Arrow */}
+                        {openId === property._id ? (
+                          <IoMdArrowDropup className="text-lg ml-2 text-gray-600 dark:text-gray-300" />
+                        ) : (
+                          <IoMdArrowDropdown className="text-lg ml-2 text-gray-600 dark:text-gray-300" />
+                        )}
                       </button>
 
                       {openId === property._id && !loadingId && (
@@ -212,8 +217,8 @@ const PropertyManagementTable = ({
                               className={`cursor-pointer py-2 px-3 rounded-2xl transition-colors duration-200 ${
                                 (property.status ? "Active" : "Inactive") ===
                                 opt
-                                  ? "bg-[#1C2B49] text-white"
-                                  : "hover:bg-[#1C2B49] hover:text-white dark:hover:bg-gray-700"
+                                  ? "bg-[#597695] text-white"
+                                  : "hover:bg-[#ECECEC] hover:text-gray-700 dark:hover:text-[#9B9DA6] dark:hover:bg-gray-700"
                               }`}
                               onClick={() => {
                                 updateStatus(property._id, opt);

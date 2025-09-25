@@ -136,8 +136,8 @@ const Navbar = () => {
         <div className="mt-10 w-full px-4 dark:mt-10">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 w-full px-4 py-3 
-              rounded-xl bg-[#1C2B49] text-white font-semibold
+            className="flex items-center justify-center gap-3 w-full px-4 py-3 
+              rounded-lg bg-[#1C2B49] text-white font-semibold
               hover:bg-[#354d79]
               shadow-md hover:shadow-lg transition-all duration-200"
           >

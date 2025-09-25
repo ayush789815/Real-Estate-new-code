@@ -4,6 +4,7 @@ import useUserManagement from "../../Hoocks/useUserManagemnt";
 import { toast } from "react-toastify";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import { IoSendSharp } from "react-icons/io5";
+import { BsSearch } from "react-icons/bs";
 // Demo notification history
 const demoNotifications = [
   {
@@ -162,7 +163,7 @@ const Notification = () => {
             <div className="flex flex-col md:flex-row gap-3 md:items-center mb-4">
               <div className="relative flex-1" ref={searchWrapRef}>
                 <span className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-slate-400">
-                  🔍
+                  <BsSearch />
                 </span>
                 <input
                   type="text"

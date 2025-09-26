@@ -43,7 +43,11 @@ const SettingsPage = () => {
       <div className="px-6 lg:px-10 py-6">
         {/* Page Header */}
         <div className="mb-6">
-          <h1 className="text-3xl dark:text-[#597695] font-semibold tracking-tight">Settings</h1>
+          <div className="text-center sm:text-left">
+            <h1 className="text-xl sm:text-3xl font-bold text-[#283655] dark:text-[#597695]">
+              Settings
+            </h1>
+          </div>
           <hr className="my-10 border-gray-200 dark:border-gray-800" />
         </div>
 

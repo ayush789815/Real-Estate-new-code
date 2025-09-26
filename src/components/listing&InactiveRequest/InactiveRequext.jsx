@@ -52,9 +52,12 @@ const InactiveRequest = () => {
     <div className="w-full min-h-screen bg-[#EEF6FB] dark:bg-[#001118]">
       <div className="mx-auto max-w-7xl px-6 py-10">
         {/* Title */}
-        <h1 className="text-[28px] font-extrabold text-[#1E3A8A] dark:text-[#597695]">
+       <div className="text-center sm:text-left">
+
+         <h1 className="text-xl sm:text-3xl font-bold text-[#283655] dark:text-[#597695]">
           Listing Request Management
         </h1>
+        </div>
         {/* <div className="mt-3 h-px w-full bg-[#DDE9F6] dark:bg-gray-700" /> */}
  <hr className="my-4 border-t border-gray-300 dark:border-gray-700" />
 

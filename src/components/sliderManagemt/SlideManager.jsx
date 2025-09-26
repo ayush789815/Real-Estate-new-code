@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { BsImage } from "react-icons/bs";
-import slider_Dummy from "../../assets/Slide_Dummy.png";
+import { Image } from "lucide-react";
 
 // Placeholder component for empty image
 const PlaceholderImage = () => (
@@ -100,14 +99,16 @@ const SliderImageManager = () => {
                 }`}
               >
                 <div
-                  className={`absolute flex items-center justify-center gap-2 text-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md font-semibold ${
+                  className={`absolute inset-0 flex items-center justify-center gap-2 font-semibold ${
                     activeImage === num
                       ? "text-white"
                       : "text-gray-700 dark:text-gray-300"
                   }`}
                 >
-                  <BsImage />
-                  Image {num}
+                  <Image className="text-lg sm:text-xl flex-shrink-0" />
+                  <span className="text-sm sm:text-base whitespace-nowrap">
+                    Image {num}
+                  </span>
                 </div>
               </button>
             ))}

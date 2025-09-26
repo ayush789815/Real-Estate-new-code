@@ -18,9 +18,12 @@ const PropertyManagement = () => {
     <div className="min-h-screen pt-10 p-8 bg-[#F1FBFF] dark:bg-[#001118] text-gray-900 dark:text-gray-100 transition-colors duration-300">
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-[#283655] dark:text-[#597695]">
+             <div className="text-center sm:text-left">
+
+         <h1 className="text-xl sm:text-3xl font-bold text-[#283655] dark:text-[#597695]">
           Property Management
         </h1>
+        </div>
       </div>
       <hr className="my-4 border-t border-gray-300 dark:border-gray-700" />
 

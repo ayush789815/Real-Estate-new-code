@@ -15,11 +15,11 @@ const UserInfo = () => {
   return (
     <div className="sm:px-8 mt-2">
       {/* Page Title */}
-      <div className="text-center sm:text-left">
-        <h1 className="text-xl sm:text-3xl font-bold text-[#283655] dark:text-[#597695]">
+    <div className="text-center sm:text-left">
+       <h1 className="text-xl sm:text-3xl font-bold text-[#283655] dark:text-[#597695]">
           User Management
         </h1>
-        <h4 className="mt-2 text-xs sm:text-[14px] tracking-normal text-gray-600 dark:text-gray-400">
+        <h4 className="mt-2 text-xs sm:text-[12px] tracking-normal text-gray-600 dark:text-gray-400">
           Manage and Track your employees effectively.
         </h4>
       </div>

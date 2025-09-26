@@ -123,11 +123,11 @@ const Notification = () => {
   return (
     <div className="flex flex-col md:flex-row h-screen">
       <main className="flex-1 p-4 md:p-8 bg-[#F3FAFF] dark:bg-[#001118] dark:text-gray-200 overflow-auto">
-        <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-gray-200">
+        <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-[#597695]">
           Notification Centre
         </h1>
 
-        <hr className="my-6 border-t border-gray-300 dark:border-gray-700" />
+        <hr className="my-8 border-t border-gray-300 dark:border-gray-700" />
 
         {/* Tabs */}
         <div className="flex flex-wrap gap-3 mb-6">
@@ -303,7 +303,6 @@ const Notification = () => {
         ) : (
           <div className="mt-6">
             {/* Notification History */}
-            {/* Notification History */}
             <div className="mt-6 space-y-4">
               {notifications.map((notif) => (
                 <div
@@ -328,7 +327,7 @@ const Notification = () => {
                       dark:group-hover:md:bg-[#182832] 
                       text-[#1F2A44] group-hover:md:text-[#283655]"
                   >
-                    <MdOutlineNotificationsActive size={24} />
+                    <MdOutlineNotificationsActive className="text-[#597695]" size={24} />
                   </div>
 
                   {/* Content */}

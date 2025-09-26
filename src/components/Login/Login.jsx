@@ -204,7 +204,7 @@ const Login = () => {
           </h1>
         </div>
 
-        <div className="w-full bg-transparent max-w-md dark:bg-gray-800 rounded-2xl relative z-10">
+        <div className="w-full bg-transparent max-w-md  rounded-2xl relative z-10">
           {/* Company Logo */}
           <div className="flex justify-center mb-4">
             <div className="w-24 h-24 rounded-sm flex items-center justify-center">

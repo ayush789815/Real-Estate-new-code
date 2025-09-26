@@ -75,24 +75,25 @@ const Navbar = () => {
         aria-label="sidebar navigation"
       >
         {/* Logo */}
-        <div className="flex items-center justify-center lg:justify-center px-4 py-6 border-b dark:border-gray-600">
+        <div className="flex items-center justify-center lg:justify-center px-4 py-6  dark:border-gray-600">
           <img
             className="w-15 lg:w-20 dark:lg:w-18"
             src={darkMode ? "/RealEstate-Logo-Darkmode.png" : logo}
             alt="logo"
           />
-          <h1 className="hidden lg:block font-black text-[24px] leading-[100%] tracking-normal  text-[#283655] px-2 py-1">
+          <h1 className="hidden lg:block font-black text-[24px] leading-[100%] tracking-normal  text-[#283655] dark:text-[#597695] px-2 py-1">
             Real Estate
           </h1>
         </div>
-
+ <hr className="mt-[3px] border-t border-gray-300 dark:border-gray-700" />
         {/* Sidebar Links */}
         <ul className="mt-6">
           <SidebarItem
-            to="/"
+            to="/dashboard"
             icon={<BiBarChartSquare className="w-6 h-6" />}
             label="Dashboard"
             onClick={windowWidth < 1024 ? toggleSidebar : undefined}
+            end // ✅ ensures Dashboard is only active on exact "/"
           />
           <SidebarItem
             to="/usermanagement"
@@ -137,7 +138,7 @@ const Navbar = () => {
           <button
             onClick={handleLogout}
             className="flex items-center justify-center gap-3 w-full px-4 py-3 
-              rounded-lg bg-[#1C2B49] text-white font-semibold
+              rounded-lg bg-[#1C2B49] dark:bg-[#597695] text-white font-semibold
               hover:bg-[#354d79]
               shadow-md hover:shadow-lg transition-all duration-200"
           >
@@ -152,10 +153,10 @@ const Navbar = () => {
   );
 };
 
-const SidebarItem = ({ to, icon, label, onClick }) => {
+const SidebarItem = ({ to, icon, label, onClick, end }) => {
   return (
     <li>
-      <NavLink to={to} onClick={onClick}>
+      <NavLink to={to} onClick={onClick} end={end}>
         {({ isActive }) => (
           <div
             className={`flex items-center gap-3 my-2 transition ${

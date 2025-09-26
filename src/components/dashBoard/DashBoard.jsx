@@ -117,7 +117,7 @@ const DashBoard = () => {
 
   return (
     <div className="w-full p-8 pt-10 h-full bg-[#F1FBFF] dark:bg-[#001118] min-h-screen">
-      <h1 className="font-bold text-3xl mb-6 text-[#283655] dark:text-white">
+      <h1 className="font-bold text-3xl mb-6 text-[#283655] dark:text-[#597695]">
         Dashboard
       </h1>
       <hr className="my-4 border-t border-gray-300 dark:border-gray-700" />

@@ -43,8 +43,8 @@ const SettingsPage = () => {
       <div className="px-6 lg:px-10 py-6">
         {/* Page Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-semibold tracking-tight">Settings</h1>
-          <hr className="mt-4 border-gray-200 dark:border-gray-800" />
+          <h1 className="text-3xl dark:text-[#597695] font-semibold tracking-tight">Settings</h1>
+          <hr className="my-10 border-gray-200 dark:border-gray-800" />
         </div>
 
         {/* Card */}

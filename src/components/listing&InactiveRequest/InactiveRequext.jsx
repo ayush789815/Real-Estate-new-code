@@ -52,10 +52,11 @@ const InactiveRequest = () => {
     <div className="w-full min-h-screen bg-[#EEF6FB] dark:bg-[#001118]">
       <div className="mx-auto max-w-7xl px-6 py-10">
         {/* Title */}
-        <h1 className="text-[28px] font-extrabold text-[#1E3A8A] dark:text-white">
+        <h1 className="text-[28px] font-extrabold text-[#1E3A8A] dark:text-[#597695]">
           Listing Request Management
         </h1>
-        <div className="mt-3 h-px w-full bg-[#DDE9F6] dark:bg-gray-700" />
+        {/* <div className="mt-3 h-px w-full bg-[#DDE9F6] dark:bg-gray-700" /> */}
+ <hr className="my-4 border-t border-gray-300 dark:border-gray-700" />
 
         {/* Content */}
         {loading ? (
@@ -107,13 +108,13 @@ const InactiveRequest = () => {
 
                 <div className="mt-4 flex justify-end gap-3">
                   <button
-                    className="inline-flex items-center justify-center rounded-full bg-[#283655] px-5 py-2 text-sm font-semibold text-white hover:bg-[#1F2F4F] transition "
+                    className="inline-flex items-center justify-center rounded-full bg-[#283655] dark:bg-[#597695] px-5 py-2 text-sm font-semibold text-white hover:bg-[#1F2F4F] transition "
                     onClick={() => handleAccept(project._id)}
                   >
                     Accept
                   </button>
                   <button
-                    className="inline-flex items-center justify-center text-red-500 rounded-full px-5 py-2 text-sm font-semibold bg-white dark:bg-gray-800 transition shadow-[0px_0px_1px_0px_#000000] hover:shadow-[0px_2px_3px_0px_#0000008A]   dark:hover:shadow-[0px_2x_3px_0px_#0000008A]  dark:shadow-[0px_0px_1px_0px_#000000]"
+                    className="inline-flex items-center justify-center text-red-500 rounded-full px-5 py-2 text-sm font-semibold bg-white dark:bg-gray-800 transition shadow-[0px_0px_1px_0px_#000000] hover:shadow-[0px_2px_3px_0px_#0000008A]   dark:hover:shadow[0px_4x_7px_0px_#0000008A]  dark:shadow-[0px_0px_1px_0px_#000000]"
                     onClick={() => handleReject(project._id)}
                   >
                     Cancel

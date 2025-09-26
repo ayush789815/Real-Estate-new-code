@@ -4,7 +4,7 @@ import slider_Dummy from "../../assets/Slide_Dummy.png";
 
 // Placeholder component for empty image
 const PlaceholderImage = () => (
-  <div className="w-full h-[380px] bg-gradient-to-br from-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-700 border-4 border-blue-200 dark:border-gray-600 rounded-xl shadow-lg flex items-center justify-center">
+  <div className="w-full h-[380px] bg-gradient-to-br from-blue-100 to-blue-200 dark:from-[#182832] dark:to-[#182832] border-4 border-blue-200 dark:border-gray-600 rounded-xl shadow-lg flex items-center justify-center">
     <div className="text-center text-gray-600 dark:text-gray-300">
       <div className="text-6xl mb-4">🖼️</div>
       <p className="text-lg font-medium">No Image Selected</p>
@@ -44,7 +44,7 @@ const SliderImageManager = () => {
     <div className="min-h-screen pt-6 p-8 bg-[#F1FBFF] dark:bg-[#001118] text-gray-900 dark:text-gray-100 transition-colors duration-300">
       {/* Header */}
       <div className="text-center sm:text-left">
-        <h1 className="text-xl sm:text-3xl font-bold text-[#283655] dark:text-gray-200">
+        <h1 className="text-xl sm:text-3xl font-bold text-[#283655] dark:text-[#597695]">
           Slider Image Manager
         </h1>
         <h4 className="mt-2 text-xs sm:text-[12px] tracking-normal text-gray-600 dark:text-gray-400">
@@ -63,8 +63,8 @@ const SliderImageManager = () => {
             }}
             className={`px-6 py-2.5 rounded-lg font-medium transition-all duration-200 ${
               activeSlider === "home"
-                ? "bg-[#283655] text-[#FFFFFF] shadow-md"
-                : "shadow-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                ? "bg-[#283655] dark:bg-[#597695] text-[#FFFFFF] shadow-md"
+                : "shadow-sm text-gray-600  dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
             }`}
           >
             Home Slider
@@ -76,7 +76,7 @@ const SliderImageManager = () => {
             }}
             className={`px-6 py-2.5 rounded-lg font-medium transition-all duration-200 ${
               activeSlider === "location"
-                ? "bg-[#283655] text-[#FFFFFF] shadow-md"
+                ? "bg-[#283655] dark:bg-[#597695] text-[#FFFFFF] shadow-md"
                 : "shadow-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
             }`}
           >
@@ -85,7 +85,7 @@ const SliderImageManager = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-1 gap-4 items-start bg-[#ffffff] dark:bg-gray-900 rounded-2xl p-10">
+      <div className="grid lg:grid-cols-1 gap-4 items-start bg-[#ffffff] dark:bg-[#182832] rounded-2xl p-10">
         {/* Image Tabs */}
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
@@ -95,8 +95,8 @@ const SliderImageManager = () => {
                 onClick={() => setActiveImage(num)}
                 className={`relative w-full h-16 rounded-[15px] border-2 transition-all duration-200 overflow-hidden group ${
                   activeImage === num
-                    ? "border-none bg-[#283655] text-white"
-                    : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600"
+                    ? "border-none bg-[#283655] dark:bg-[#597695] text-white"
+                    : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#182832] hover:border-gray-300 dark:hover:border-gray-600"
                 }`}
               >
                 <div
@@ -122,7 +122,7 @@ const SliderImageManager = () => {
                 className="hidden"
                 onChange={handleUpload}
               />
-              <div className="w-full px-6 py-3 bg-[#283655] text-white text-center rounded-full shadow-md hover:opacity-90 transition-all">
+              <div className="w-full px-6 py-3 bg-[#283655] dark:bg-[#597695] text-white text-center rounded-full shadow-md hover:opacity-90 transition-all">
                 Upload image for Image {activeImage}
               </div>
             </label>
@@ -135,7 +135,7 @@ const SliderImageManager = () => {
             <img
               src={currentImage}
               alt={`Image ${activeImage}`}
-              className="w-full h-[380px] object-cover rounded-xl shadow-lg"
+              className="w-full h-[380px] dark:bg-[#182832] object-cover rounded-xl shadow-lg"
             />
           ) : (
             <PlaceholderImage />

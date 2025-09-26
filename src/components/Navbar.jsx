@@ -145,7 +145,7 @@ const Navbar = () => {
             <span className="text-2xl">
               <IoMdLogOut />
             </span>
-            <span className="hidden lg:inline">Logout</span>
+            <span className=" lg:inline">Logout</span>
           </button>
         </div>
       </nav>
@@ -192,3 +192,4 @@ const SidebarItem = ({ to, icon, label, onClick, end }) => {
 };
 
 export default Navbar;
+
